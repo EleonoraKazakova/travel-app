@@ -1,3 +1,8 @@
+require('dotenv').config()
+
+const geoName = require('./geoname')
+const weatherCity = require('./weather')
+
 const express = require('express');
 
 const app = express();
@@ -33,22 +38,23 @@ const projectData = {
   weather: ''
 }
 
-app.get('/city', function (req, res) {
+app.get('/trip', function (req, res) {
   res.send(projectData)
 })
 
-app.post('/', addData)
-
-function addData(req, res){
+app.post('/trip', async(req, res) => {
   let data = req.body
-
-  projectData['country'] = data.country
+  const allCity = await geoName.getCityData(data.city)
+  const allWeatherCity = await weatherCity.getWeatherData(data.city)
+  console.log('allWeatherCity = ',  allWeatherCity.data.data.temp)
   projectData['city'] = data.city
-  console.log(data)
-  //projectData['date'] = data.date
-  projectData['longitude'] = data.longitude
-  projectData['latitude'] = data.latitude
-  //projectData['weather'] = data.weather
-
+ 
+  projectData['date'] = data.date
+  projectData['country'] = allCity.data.geonames[0].countryName
+  projectData['longitude'] = allCity.data.geonames[0].lng
+  projectData['latitude'] = allCity.data.geonames[0].lat
+  projectData['weather'] = allWeatherCity.data.data.map(day => ({day: day.valid_date, temp: day.temp}))
+  
   res.send(projectData)
-}
+})
+

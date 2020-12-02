@@ -1,36 +1,6 @@
-const baseURL = 'http://api.geonames.org/searchJSON'
-
-const getCityData = async (baseURL, cityName) => {
-  const req = await fetch(baseURL + `?q=${cityName}&username=eleonorakazakova`)
-  try {
-    const data = await req.json()
-    return data
-  } catch (error) {
-    console.log('error', error)
-  }
-}
-
-function action(){
-  const newCity = document.getElementById('city').value
-  console.log(newCity)
-  getCityData(baseURL, newCity).then(
-    function(data) {
-      const allData = {
-        city: newCity,
-        country: data.geonames[0].countryCode,
-        longitude: data.geonames[0].lng,
-        latitude: data.geonames[0].lat
-      }
-      renderCity(allData)
-
-      saveCityData('/', allData) 
-    }
-  )
-}
-
-const saveCityData = async (path, data = {}) => {
-  const res = await fetch(path, {
-    method: 'POST', //send data
+const createTrip = async (data) => {
+  const res = await fetch('/trip', {
+    method: 'POST',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -44,8 +14,15 @@ const saveCityData = async (path, data = {}) => {
   }
 }
 
+function action() {
+  const city = document.getElementById('city').value
+  const date = document.getElementById('date').value
+
+  createTrip({ city, date }).then(renderCity)
+}
+/** */
 const getSavedCityData = async () => {
-  const res = await fetch('/city')
+  const res = await fetch('/trip')
   try {
     return await res.json()
   } catch (error) {
@@ -58,8 +35,31 @@ const renderCity = (city) => {
   document.getElementById('newcountry').innerHTML = city.country
   document.getElementById('longitude').innerHTML = city.longitude
   document.getElementById('latitude').innerHTML = city.latitude
+  document.getElementById('newDate').innerHTML = city.date
+  
+  console.log('city= ', city)
+  renderWeather(city.weather)
+}
+
+const renderWeather = (weather) => {
+  const table = document.createElement("TABLE");
+  
+  for (let i = 0; i < weather.length; i++) {
+
+    const row = table.insertRow(i)
+    const cell1 = row.insertCell(0)
+    const cell2 = row.insertCell(1)
+
+    cell1.innerHTML = "Date: " + weather[i].day
+    cell2.innerHTML = "Temperature: " + weather[i].temp
+    
+  }
+
+  document.getElementById('weather').innerHTML = ''
+  document.getElementById('weather').appendChild(table)
+
 }
 
 getSavedCityData().then(renderCity)
 
-export {action}
+export { action }

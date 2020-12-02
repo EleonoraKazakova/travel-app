@@ -24,6 +24,7 @@ main{
 .module{
   display: flex;
   flex-direction: row;
+  gap: 10px;
 }
 header{
  grid-area: hd;
