@@ -20,7 +20,7 @@ function action() {
 
   createTrip({ city, date }).then(renderCity)
 }
-/** */
+/**got data from backend*/
 const getSavedCityData = async () => {
   const res = await fetch('/trip')
   try {
@@ -36,6 +36,7 @@ const renderCity = (city) => {
   document.getElementById('longitude').innerHTML = city.longitude
   document.getElementById('latitude').innerHTML = city.latitude
   document.getElementById('newDate').innerHTML = city.date
+  document.getElementById('photo').src = city.photo
   
   console.log('city= ', city)
   renderWeather(city.weather)
