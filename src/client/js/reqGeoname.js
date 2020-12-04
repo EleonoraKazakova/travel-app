@@ -43,22 +43,15 @@ const renderCity = (city) => {
 }
 
 const renderWeather = (weather) => {
-  const table = document.createElement("TABLE");
-  
-  for (let i = 0; i < weather.length; i++) {
-
-    const row = table.insertRow(i)
-    const cell1 = row.insertCell(0)
-    const cell2 = row.insertCell(1)
-
-    cell1.innerHTML = "Date: " + weather[i].day
-    cell2.innerHTML = "Temperature: " + weather[i].temp
-    
-  }
-
   document.getElementById('weather').innerHTML = ''
-  document.getElementById('weather').appendChild(table)
 
+  for (let i = 0; i < weather.length; i++) {
+    const box = document.createElement("div")    
+    
+    box.innerHTML = "Date: " + weather[i].day + '<br>'+ "Temperature: " + weather[i].temp
+    
+    document.getElementById('weather').appendChild(box)
+  }
 }
 
 getSavedCityData().then(renderCity)

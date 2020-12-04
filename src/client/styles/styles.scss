@@ -1,20 +1,45 @@
 body{
-    background-color: lightblue;
+  background-color: rgb(2, 62, 82);
+  margin: 0;
 }
 
 #generate{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .content{
   display: grid;
   grid-template-columns: 20% auto 20%;
-  grid-template-rows: 100px auto 100px;
+  grid-template-rows: 100px 100px 400px auto 50px;
   grid-template-areas: 
   'hd hd hd'
+  'll tt rr'
+  'cc cct dd'
   'lf mn rt'
   'ft ft ft';
   min-height: 100vh;
+}
+
+.form{
+  grid-area: tt;
+}
+
+.tripBoxLeft{
+  grid-area: cc;
+  background-color: rgb(238, 183, 183);
+}
+
+.tripBoxRight{
+  grid-area: dd;
+  background-color: rgb(238, 183, 183);
+}
+
+.tripBoxCenter{
+  grid-area: cct;
+  background-color: rgb(238, 183, 183);
+  font-size: 20px;
+  align-items: center;
+  display: flex;
 }
 
 main{
@@ -26,15 +51,58 @@ main{
   flex-direction: row;
   gap: 10px;
 }
+
 header{
  grid-area: hd;
 }
 
 footer{
   grid-area: ft;
+  background-color: rgb(2, 43, 58);
+  color: aliceblue;
+  text-align: center;
 }
 
 #photo{
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
 }
+
+.trip{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.textHeader{
+  color: aliceblue;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 30px;
+}
+
+.text{
+  color: aliceblue;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.weather{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.weather > div{
+  display: flex;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.textWeather{
+  color: aliceblue;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+

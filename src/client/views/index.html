@@ -9,69 +9,73 @@
 </head>
 
 <body class="content">
+
   <header>
-    <div class="">
+    <div class="textHeader">
       FEND Capstone Project: Travel App
     </div>
-
   </header>
 
-  <main>
-    <section>
-      <div class='module'>
-        <div>City</div>
-        <textarea class='' id="city" type="text" rows='1'  placeholder="Input city"></textarea>
-      </div>
-      <div class='module'>
-        <div>Date</div>
-        <input type="date" id="date">
-        <div id="generate" name="">Click</div>
-      </div>
-    </section>
+  <section class="form text">
+    <div class='module '>
+      <div>City</div>
+      <input type="text" class='' id="city" type="text" rows='1' placeholder="Input city">
+    </div>
+    <div class='module'>
+      <div>Date</div>
+      <input type="date" id="date">
+      <div id="generate" name="">Click</div>
+    </div>
+  </section>
 
-    <section>
-      <strong>Results</strong>
+
+  <div class="tripBoxLeft"></div>
+
+  <section class="tripBoxCenter">
+    <div>
       <div id="results"></div>
 
+      <div class="trip">
+        <img  id="photo">
 
-      <div >
-        <div>Photo</div>
-        <img src='photo' id="photo">
+        <section>
+          <div class='module'>
+            <div>Country:</div>
+            <div id="newcountry"></div>
+          </div>
+
+          <div class='module'>
+
+            <div>City:</div>
+            <div id="newcity"></div>
+
+          </div>
+
+          <div class='module'>
+            <div>Date of the trip:</div>
+            <div id="newDate"></div>
+          </div>
+
+          <div class='module'>
+            <div>latitude:</div>
+            <div id="latitude"></div>
+          </div>
+
+          <div class='module'>
+            <div>longitude:</div>
+            <div id="longitude"></div>
+          </div>
+
+        </section>
       </div>
+    </div>
+  </section>
 
-      <div class='module'>
-        <div>Country:</div>
-        <div id="newcountry"></div>
-      </div>
+  <div class="tripBoxRight"></div>
 
-      <div class='module'>
-      
-        <div>City:</div>
-        <div id="newcity"></div>
-      
-      </div>
-
-      <div class='module'>
-        <div>Date of the trip:</div>
-        <div id="newDate"></div>
-      </div>
-
-      <div class='module'>
-        <div>latitude:</div>
-        <div id="latitude"></div>
-      </div>
-
-      <div class='module'>
-        <div>longitude:</div>
-        <div id="longitude"></div>
-      </div>
-
-      <div >
-        <div>Weather forecast for the next 16 days:</div>
-        <div id="weather"></div>
-      </div>
-    </section>
-
+  <main >
+    <div class='textWeather'>Weather forecast for the next 16 days:</div>
+    <div class="weather text" id="weather"></div>
   </main>
 
   <footer>
