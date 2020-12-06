@@ -30,29 +30,47 @@ const getSavedCityData = async () => {
   }
 }
 
-const renderCity = (city) => {
-  document.getElementById('newcity').innerHTML = city.city
-  document.getElementById('newcountry').innerHTML = city.country
-  document.getElementById('longitude').innerHTML = city.longitude
-  document.getElementById('latitude').innerHTML = city.latitude
-  document.getElementById('newDate').innerHTML = city.date
-  document.getElementById('photo').src = city.photo
+const renderCity = (trips) => {
+  document.getElementById('allTrips').innerHTML = ''
+  for( let i = 0; i < trips.length; i++ ){
+    
+    const photoCity = document.createElement('img')
+    const tripDiv = document.createElement("div")
+    const trip = document.createElement("div")
+    photoCity.src = trips[i].photo
+    trip.innerHTML = 'Country: ' + trips[i].country +  '<br>' + 'City: ' + trips[i].city +  '<br>' + 'Date of the trip: ' + trips[i].date + '<br>' + 'Longitude: ' + trips[i].longitude + '<br>' + 'Latitude: ' + trips[i].latitude
+    
+    const weather = renderWeather(trips[i].weather)
+    const titleWeather = document.createElement('p')
+    titleWeather.innerHTML = 'Weather forecast for the next 16 days:'
+    tripDiv.appendChild(photoCity)
+    tripDiv.appendChild(trip)
+    
+    tripDiv.appendChild(titleWeather)
+    tripDiv.appendChild(weather)
+    document.getElementById('allTrips').appendChild(tripDiv)
+    
+  }
+ 
+  console.log('trips= ', trips)
   
-  console.log('city= ', city)
-  renderWeather(city.weather)
 }
 
 const renderWeather = (weather) => {
-  document.getElementById('weather').innerHTML = ''
-
+  console.log('weather=',weather)
+  //document.getElementById('weather').innerHTML = ''
+  const tripWeather = document.createElement('div')
+  tripWeather.classList.add('weather')
   for (let i = 0; i < weather.length; i++) {
-    const box = document.createElement("div")    
-    
+    const box = document.createElement("div") 
+    box.classList.add('weatherDay')  
     box.innerHTML = "Date: " + weather[i].day + '<br>'+ "Temperature: " + weather[i].temp
-    
-    document.getElementById('weather').appendChild(box)
+    tripWeather.appendChild(box)
+    //document.getElementById('weather').appendChild(box)
   }
+  return tripWeather
 }
+//renderWeather()
 
 getSavedCityData().then(renderCity)
 

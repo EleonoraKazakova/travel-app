@@ -10,11 +10,10 @@ body{
 .content{
   display: grid;
   grid-template-columns: 20% auto 20%;
-  grid-template-rows: 100px 100px 400px auto 50px;
+  grid-template-rows: 100px 100px  auto 50px;
   grid-template-areas: 
   'hd hd hd'
   'll tt rr'
-  'cc cct dd'
   'lf mn rt'
   'ft ft ft';
   min-height: 100vh;
@@ -64,7 +63,6 @@ footer{
 }
 
 #photo{
-  width: 100%;
   max-width: 500px;
 }
 
@@ -93,7 +91,7 @@ footer{
   gap: 10px;
 }
 
-.weather > div{
+.weatherDay{
   display: flex;
   border: 1px solid white;
   padding: 5px;

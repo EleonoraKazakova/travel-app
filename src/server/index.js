@@ -30,18 +30,10 @@ function listening(){
   console.log(`running on localhost: ${port}`);
 }
 
-const projectData = {
-  country: '',
-  city: '',
-  date: '',
-  longitude: '',
-  latitude: '',
-  weather: '',
-  photo: ''
-}
+const trips = [ ]
 
 app.get('/trip', function (req, res) {
-  res.send(projectData)
+  res.send(trips)
 })
 
 app.post('/trip', async(req, res) => {
@@ -51,15 +43,18 @@ app.post('/trip', async(req, res) => {
   const allPhotoCity = await photoCity.getPhotoData(data.city)
 
   console.log('allPhotoCity = ',  allPhotoCity.data.hits[0])
-  projectData['city'] = data.city
- 
-  projectData['date'] = data.date
-  projectData['country'] = allCity.data.geonames[0].countryName
-  projectData['longitude'] = allCity.data.geonames[0].lng
-  projectData['latitude'] = allCity.data.geonames[0].lat
-  projectData['weather'] = allWeatherCity.data.data.map(day => ({day: day.valid_date, temp: day.temp}))
-  projectData['photo'] = allPhotoCity.data.hits[0].webformatURL
 
-  res.send(projectData)
+  trips.unshift({
+    'photo': allPhotoCity.data.hits[0].webformatURL,
+    'city': data.city, 
+    'date': data.date,
+    'country': allCity.data.geonames[0].countryName,
+    'longitude': allCity.data.geonames[0].lng,
+    'latitude': allCity.data.geonames[0].lat,
+    'weather': allWeatherCity.data.data.map(day => ({day: day.valid_date, temp: day.temp})),
+    
+  })   
+
+  res.send(trips)
 })
 
