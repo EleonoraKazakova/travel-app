@@ -48,6 +48,7 @@ app.post('/trip', async(req, res) => {
     'photo': allPhotoCity.data.hits[0].webformatURL,
     'city': data.city, 
     'date': data.date,
+    'dateEnd': data.dateEnd,
     'country': allCity.data.geonames[0].countryName,
     'longitude': allCity.data.geonames[0].lng,
     'latitude': allCity.data.geonames[0].lat,

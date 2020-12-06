@@ -17,8 +17,9 @@ const createTrip = async (data) => {
 function action() {
   const city = document.getElementById('city').value
   const date = document.getElementById('date').value
+  const dateEnd = document.getElementById('dateEnd').value
 
-  createTrip({ city, date }).then(renderCity)
+  createTrip({ city, date, dateEnd }).then(renderCity)
 }
 /**got data from backend*/
 const getSavedCityData = async () => {
@@ -34,11 +35,19 @@ const renderCity = (trips) => {
   document.getElementById('allTrips').innerHTML = ''
   for( let i = 0; i < trips.length; i++ ){
     
+    const oneDay = 24 * 60 * 60 * 1000
+    const firstDate = new Date(document.getElementById('date').value)
+    const secondDate = new Date(document.getElementById('dateEnd').value)
+    const tripDays = Math.round(Math.abs((firstDate - secondDate) / oneDay))
+    console.log('tripDays= ', tripDays)
+    console.log('oneDay= ', oneDay)
+    console.log('secondDate= ', secondDate)
+
     const photoCity = document.createElement('img')
     const tripDiv = document.createElement("div")
     const trip = document.createElement("div")
     photoCity.src = trips[i].photo
-    trip.innerHTML = 'Country: ' + trips[i].country +  '<br>' + 'City: ' + trips[i].city +  '<br>' + 'Date of the trip: ' + trips[i].date + '<br>' + 'Longitude: ' + trips[i].longitude + '<br>' + 'Latitude: ' + trips[i].latitude
+    trip.innerHTML = 'Country: ' + trips[i].country +  '<br>' + 'City: ' + trips[i].city +  '<br>' + 'Travel date: ' + trips[i].date + ' - ' + trips[i].dateEnd+ '<br>' + 'Length of trip: '+ tripDays + '<br>' + 'Longitude: ' + trips[i].longitude + '<br>' + 'Latitude: ' + trips[i].latitude
     
     const weather = renderWeather(trips[i].weather)
     const titleWeather = document.createElement('p')
@@ -54,6 +63,14 @@ const renderCity = (trips) => {
  
   console.log('trips= ', trips)
   
+}
+
+const countDay = () => {
+  const oneDay = 24 * 60 * 60 * 1000
+  const firstDate = new Date(2020, 2, 5)
+  const secondDate = new Date(2020, 2, 25)
+
+ diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 }
 
 const renderWeather = (weather) => {
