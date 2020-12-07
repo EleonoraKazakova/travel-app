@@ -62,7 +62,9 @@ app.post('/trip', async(req, res) => {
     'population': infoRestCountry.data.map(i=>i.population),
     'fullName': infoRestCountry.data.map(i=>i.altSpellings[1]),
     'currency': infoRestCountry.data.map(i=>i.currencies[0]['name'])
-  })   
+  })
+  
+  trips.sort( (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime() )   
   console.log(trips)
   res.send(trips)
 })
