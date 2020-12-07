@@ -3,6 +3,7 @@ require('dotenv').config()
 const geoName = require('./geoname')
 const weatherCity = require('./weather')
 const photoCity = require('./photoCity')
+const infoCountry = require('./restcountries')
 
 const express = require('express');
 
@@ -30,7 +31,7 @@ function listening(){
   console.log(`running on localhost: ${port}`);
 }
 
-const trips = [ ]
+let trips = [ ]
 
 app.get('/trip', function (req, res) {
   res.send(trips)
@@ -40,11 +41,16 @@ app.post('/trip', async(req, res) => {
   let data = req.body
   const allCity = await geoName.getCityData(data.city)
   const allWeatherCity = await weatherCity.getWeatherData(data.city)
-  const allPhotoCity = await photoCity.getPhotoData(data.city)
+  let allPhotoCity = await photoCity.getPhotoData(data.city)
 
-  console.log('allPhotoCity = ',  allPhotoCity.data.hits[0])
+  if(allPhotoCity.data.hits.length === 0){
+    allPhotoCity = await photoCity.getPhotoData(allCity.data.geonames[0].countryName)
+  } 
+
+  const infoRestCountry = await infoCountry.getCountryData(allCity.data.geonames[0].countryName)
 
   trips.unshift({
+    'id': Math.random().toString(36).substr(2, 9),
     'photo': allPhotoCity.data.hits[0].webformatURL,
     'city': data.city, 
     'date': data.date,
@@ -53,9 +59,19 @@ app.post('/trip', async(req, res) => {
     'longitude': allCity.data.geonames[0].lng,
     'latitude': allCity.data.geonames[0].lat,
     'weather': allWeatherCity.data.data.map(day => ({day: day.valid_date, temp: day.temp})),
-    
+    'population': infoRestCountry.data.map(i=>i.population),
+    'fullName': infoRestCountry.data.map(i=>i.altSpellings[1]),
+    'currency': infoRestCountry.data.map(i=>i.currencies[0]['name'])
   })   
-
+  console.log(trips)
   res.send(trips)
 })
+
+//remove a trip by id
+app.delete('/delete/:id', (req, res) => { 
+  let id = req.params['id']
+  trips = trips.filter(el => id !== el['id'] )
+
+  res.send(trips)
+}) 
 
