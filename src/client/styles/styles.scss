@@ -1,41 +1,53 @@
 body{
-  background-color: rgb(2, 62, 82);
+  background-color: rgb(232, 237, 252);
   margin: 0;
 }
 
 #generate{
   cursor: pointer;
 }
-
+@media  (min-width: 10px) {
 .content{
   display: grid;
-  grid-template-columns: 20% auto 20%;
+  grid-template-columns: 100%;
   grid-template-rows: 100px 100px  auto 50px;
+  /*grid-template-columns: 20% auto 20%;
+  grid-template-rows: 100px 100px  auto 50px;*/
   grid-template-areas: 
-  'hd hd hd'
+  'hd'
+  'tt'
+  'mn'
+  'ft';
+  /*'hd hd hd'
   'll tt rr'
   'lf mn rt'
-  'ft ft ft';
+  'ft ft ft';*/
   min-height: 100vh;
+  width: 100vw;
+  
+}
 }
 
 .form{
   grid-area: tt;
+  padding-left: 20%;
+  padding-right: 20%;
+  background-color: rgba(248, 55, 103, 0.808);
 }
 
 .tripBoxLeft{
   grid-area: cc;
-  background-color: rgb(238, 183, 183);
+  //background-color: rgb(238, 183, 183);
 }
 
 .tripBoxRight{
   grid-area: dd;
-  background-color: rgb(238, 183, 183);
+  //background-color: rgb(238, 183, 183);
 }
 
 .tripBoxCenter{
   grid-area: cct;
-  background-color: rgb(238, 183, 183);
+  //background-color: rgb(238, 183, 183);
   font-size: 20px;
   align-items: center;
   display: flex;
@@ -43,6 +55,7 @@ body{
 
 main{
   grid-area: mn;
+  
 }
 
 .module{
@@ -53,6 +66,7 @@ main{
 
 header{
  grid-area: hd;
+ 
 }
 
 footer{
@@ -73,14 +87,14 @@ footer{
 }
 
 .textHeader{
-  color: aliceblue;
+  color: rgb(1, 39, 71);
   text-align: center;
   font-size: 30px;
   padding-top: 30px;
 }
 
 .text{
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   margin-top: 20px;
   font-size: 20px;
 }
@@ -89,6 +103,7 @@ footer{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  width: 50%;
 }
 
 .weatherDay{
@@ -103,4 +118,28 @@ footer{
   font-size: 24px;
 }
 
+.tripDiv{
+  //padding-left: 20%;
+  //padding-right: 20%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.oldTripDiv{
+  background-color: rgba(160, 160, 160, 0.521);
+  //padding-left: 20%;
+  //padding-right: 20%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100vw;
+  justify-content: center;
+}
+
+.weatherTitleWeather{
+  display: flex;
+  flex-direction: column;
+}
 

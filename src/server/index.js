@@ -33,6 +33,7 @@ function listening(){
 
 let trips = [ ]
 
+
 app.get('/trip', function (req, res) {
   res.send(trips)
 })
@@ -64,10 +65,19 @@ app.post('/trip', async(req, res) => {
     'currency': infoRestCountry.data.map(i=>i.currencies[0]['name'])
   })
   
-  trips.sort( (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime() )   
+  trips.sort( (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime() )
+  
+  trips = tripsFilter(trips)
+  
   console.log(trips)
   res.send(trips)
 })
+
+  const tripsFilter = (trips) => {
+    dateLong = trips.filter(a => new Date(a.date).getTime() > new Date().getTime() )
+    dateShort = trips.filter(a => new Date(a.date).getTime() < new Date().getTime() )
+    return dateLong.concat(dateShort)
+  }
 
 //remove a trip by id
 app.delete('/delete/:id', (req, res) => { 
