@@ -5,68 +5,58 @@ body{
 
 #generate{
   cursor: pointer;
+  background-color: rgb(248, 248, 248);
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  margin-top: 5px;
 }
-@media  (min-width: 10px) {
+
+.click{
+  cursor: pointer;
+  background-color: rgba(105, 105, 105, 0.329);
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
 .content{
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 100px 100px  auto 50px;
-  /*grid-template-columns: 20% auto 20%;
-  grid-template-rows: 100px 100px  auto 50px;*/
+  grid-template-rows: 100px 120px  auto 50px;
   grid-template-areas: 
   'hd'
   'tt'
   'mn'
   'ft';
-  /*'hd hd hd'
-  'll tt rr'
-  'lf mn rt'
-  'ft ft ft';*/
   min-height: 100vh;
-  width: 100vw;
-  
-}
 }
 
 .form{
   grid-area: tt;
-  padding-left: 20%;
-  padding-right: 20%;
-  background-color: rgba(248, 55, 103, 0.808);
-}
-
-.tripBoxLeft{
-  grid-area: cc;
-  //background-color: rgb(238, 183, 183);
-}
-
-.tripBoxRight{
-  grid-area: dd;
-  //background-color: rgb(238, 183, 183);
-}
-
-.tripBoxCenter{
-  grid-area: cct;
-  //background-color: rgb(238, 183, 183);
-  font-size: 20px;
-  align-items: center;
   display: flex;
+  justify-content: start;
+  width: 1000px;
+  flex-direction: column;
 }
 
 main{
   grid-area: mn;
-  
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .module{
   display: flex;
   flex-direction: row;
   gap: 10px;
+  padding-bottom: 5px;
 }
 
 header{
- grid-area: hd;
- 
+  grid-area: hd;
 }
 
 footer{
@@ -95,16 +85,14 @@ footer{
 
 .text{
   color: rgb(0, 0, 0);
-  margin-top: 20px;
   font-size: 20px;
 }
 
 .weather{
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  //width: 1000px;
-  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
 }
 
 .weatherDay{
@@ -119,34 +107,24 @@ footer{
   font-size: 24px;
 }
 
-.div{
+.divForm{
+  grid-area: tt;
   display: flex;
   justify-content: center;
-  width: 100vw;
-}
-
-.tripDiv{
-  //padding-left: 20%;
-  //padding-right: 20%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 1000px;
+  background-color: rgba(248, 55, 103, 0.808);
   align-items: center;
 }
 
+.tripDiv{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 1000px;
+}
 
 .oldTripDiv{
   background-color: rgba(160, 160, 160, 0.521);
-  //padding-left: 20%;
-  //padding-right: 20%;
   padding-top: 20px;
   padding-bottom: 20px;
-  width: 100vw;
-  justify-content: center;
-  
 }
 
 .weatherTitleWeather{
@@ -154,3 +132,6 @@ footer{
   flex-direction: column;
 }
 
+.textbox{
+  height: 20px;
+}

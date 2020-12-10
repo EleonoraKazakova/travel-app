@@ -15,30 +15,27 @@
       FEND Capstone Project: Travel App
     </div>
   </header>
-
-  <section class="form text">
-    <div class='module '>
-      <div>City</div>
-      <input type="text" class='' id="city" type="text" rows='1' placeholder="Input city">
+  <section class="divForm">
+    <div class="form text">
+      <div class='module '>
+        <div>City</div>
+        <input type="text" class='textbox' id="city" type="text" rows='1' placeholder="Input city">
+      </div>
+      <div class='module'>
+        <div>Start of the trip:</div>
+        <input type="date" id="date" class='textbox'>
+        <div>The end of the trip:</div>
+        <input type="date" id="dateEnd" class='textbox'>
+      </div>
+      <div class='module'>
+        <div id="generate" name="" >Click</div>
+      </div>
+      
     </div>
-    <div class='module'>
-      <div>Start of the trip:</div>
-      <input type="date" id="date">
-      <div>The end of the trip:</div>
-      <input type="date" id="dateEnd">
-      <div id="generate" name="">Click</div>
-    </div>
+    
   </section>
 
-  <main>
-    <section class="tripBoxCenter">
-
-      <div id='allTrips' ></div>
-     
-    </section>
-
-    
-
+  <main id='allTrips'>  
   </main>
 
   <footer>

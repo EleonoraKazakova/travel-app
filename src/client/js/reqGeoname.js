@@ -63,6 +63,16 @@ const renderCity = (trips) => {
 
     const photoCity = document.createElement('img')
     const tripDiv = document.createElement("div")
+    const div = document.createElement('div')
+
+    if( new Date(trips[i].date).getTime() < new Date().getTime() ){
+      const finishedTrip = document.createElement('p')
+      finishedTrip.innerHTML = 'The trip ended'
+      finishedTrip.classList.add('module')
+      tripDiv.appendChild(finishedTrip)
+      tripDiv.classList.add('oldTripDiv')
+    }
+
     const divPhotoTrip = document.createElement("div")
     const trip = document.createElement("div")
     photoCity.src = trips[i].photo
@@ -81,12 +91,12 @@ const renderCity = (trips) => {
     
     const weather = renderWeather(trips[i].weather)
     const titleWeather = document.createElement('p')
-    const div = document.createElement('div')
+    
 
     titleWeather.innerHTML = 'Weather forecast for the next 16 days:'
     
-    div.appendChild(tripDiv)
-    div.classList.add('div')
+    /*div.appendChild(tripDiv)
+    div.classList.add('main')*/
 
     tripDiv.classList.add('tripDiv')
 
@@ -103,18 +113,17 @@ const renderCity = (trips) => {
     weatherTitleWeather.classList.add('weatherTitleWeather')
     tripDiv.appendChild(weatherTitleWeather)
 
-    document.getElementById('allTrips').appendChild(div)
+    document.getElementById('allTrips').appendChild(tripDiv)
 
     const deleteButton = document.createElement('p')
+    deleteButton.classList.add('click')
     deleteButton.innerHTML = 'Remove a trip'
     deleteButton.onclick = function () {
       deleteTrip(trips[i].id).then(renderCity)
     }
     tripDiv.appendChild(deleteButton)
 
-    if( new Date(trips[i].date).getTime() < new Date().getTime() ){
-      div.classList.add('oldTripDiv')
-    }
+    
   }
  
   console.log('trips= ', trips)
