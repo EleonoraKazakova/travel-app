@@ -45,7 +45,8 @@ main{
   grid-area: mn;
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .module{

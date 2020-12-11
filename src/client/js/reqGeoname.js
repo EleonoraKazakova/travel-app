@@ -38,6 +38,7 @@ function action() {
 
   createTrip({ city, date, dateEnd }).then(renderCity)
 }
+
 /**got data from backend*/
 const getSavedCityData = async () => {
   const res = await fetch('/trip')
@@ -63,9 +64,8 @@ const renderCity = (trips) => {
 
     const photoCity = document.createElement('img')
     const tripDiv = document.createElement("div")
-    const div = document.createElement('div')
 
-    if( new Date(trips[i].date).getTime() < new Date().getTime() ){
+    if ( isOld(trips[i].date) ) {
       const finishedTrip = document.createElement('p')
       finishedTrip.innerHTML = 'The trip ended'
       finishedTrip.classList.add('module')
@@ -90,14 +90,10 @@ const renderCity = (trips) => {
     )
     
     const weather = renderWeather(trips[i].weather)
-    const titleWeather = document.createElement('p')
-    
+    const titleWeather = document.createElement('p')    
 
     titleWeather.innerHTML = 'Weather forecast for the next 16 days:'
     
-    /*div.appendChild(tripDiv)
-    div.classList.add('main')*/
-
     tripDiv.classList.add('tripDiv')
 
     tripDiv.appendChild(divPhotoTrip)
@@ -109,7 +105,6 @@ const renderCity = (trips) => {
 
     weatherTitleWeather.appendChild(titleWeather)
     weatherTitleWeather.appendChild(weather)
-    //weatherTitleWeather.appendChild(deleteButton)
     weatherTitleWeather.classList.add('weatherTitleWeather')
     tripDiv.appendChild(weatherTitleWeather)
 
@@ -121,17 +116,12 @@ const renderCity = (trips) => {
     deleteButton.onclick = function () {
       deleteTrip(trips[i].id).then(renderCity)
     }
-    tripDiv.appendChild(deleteButton)
-
-    
+    tripDiv.appendChild(deleteButton)    
   }
  
-  console.log('trips= ', trips)
 }
 
 const renderWeather = (weather) => {
-  console.log('weather=',weather)
-  
   const tripWeather = document.createElement('div')
   tripWeather.classList.add('weather')
   for (let i = 0; i < weather.length; i++) {
@@ -143,6 +133,8 @@ const renderWeather = (weather) => {
   return tripWeather
 }
 
+const isOld = date => new Date(date).getTime() < new Date().getTime() 
+
 getSavedCityData().then(renderCity)
 
-export { action }
+export { action, isOld }

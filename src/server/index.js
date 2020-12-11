@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const tripsFilter = require('./tripsFilter')
+
 const geoName = require('./geoname')
 const weatherCity = require('./weather')
 const photoCity = require('./photoCity')
@@ -67,17 +69,17 @@ app.post('/trip', async(req, res) => {
   
   trips.sort( (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime() )
   
-  trips = tripsFilter(trips)
+  trips = tripsFilter.tripsFilter(trips)
   
   console.log(trips)
   res.send(trips)
 })
 
-  const tripsFilter = (trips) => {
+  /*const tripsFilter = (trips) => {
     dateLong = trips.filter(a => new Date(a.date).getTime() > new Date().getTime() )
     dateShort = trips.filter(a => new Date(a.date).getTime() < new Date().getTime() )
     return dateLong.concat(dateShort)
-  }
+  }*/
 
 //remove a trip by id
 app.delete('/delete/:id', (req, res) => { 
@@ -86,4 +88,6 @@ app.delete('/delete/:id', (req, res) => {
 
   res.send(trips)
 }) 
+
+module.exports = {tripsFilter}
 

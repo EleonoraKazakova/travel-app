@@ -1,5 +1,5 @@
 const axios = require('axios')
-baseURL = 'https://restcountries.eu/rest/v2/name/'
+const baseURL = 'https://restcountries.eu/rest/v2/name/'
 
 const getCountryData = async(country) => {
     try{
