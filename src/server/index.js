@@ -52,12 +52,20 @@ app.post('/trip', async(req, res) => {
 
   const infoRestCountry = await infoCountry.getCountryData(allCity.data.geonames[0].countryName)
 
+  let date = data.date
+  let dateEnd = data.dateEnd
+  if(!date){
+    const currentDate = new Date()
+    date = [currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate()].join('-')
+    dateEnd = [currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate()].join('-')
+  }
+
   trips.unshift({
     'id': Math.random().toString(36).substr(2, 9),
     'photo': allPhotoCity.data.hits[0].webformatURL,
     'city': data.city, 
-    'date': data.date,
-    'dateEnd': data.dateEnd,
+    'date': date,
+    'dateEnd': dateEnd,
     'country': allCity.data.geonames[0].countryName,
     'longitude': allCity.data.geonames[0].lng,
     'latitude': allCity.data.geonames[0].lat,
@@ -68,7 +76,7 @@ app.post('/trip', async(req, res) => {
   })
   
   trips.sort( (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime() )
-  
+  console.log(trips)
   trips = tripsFilter.tripsFilter(trips)
   
   console.log(trips)

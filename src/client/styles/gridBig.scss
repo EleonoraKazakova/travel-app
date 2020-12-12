@@ -1,0 +1,94 @@
+
+@media  (min-width: 1020px) {
+  .content{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 120px  auto 50px;
+    grid-template-areas: 
+    'hd'
+    'tt'
+    'mn'
+    'ft';
+    min-height: 100vh;
+  }
+
+  .form{
+    grid-area: tt;
+    display: flex;
+    justify-content: start;
+    width: 1000px;
+    flex-direction: column;
+  }
+
+  .module{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-bottom: 5px;
+  }
+
+  .moduleTripEnd{
+    padding-bottom: 5px;
+  }
+  
+  .tripDiv{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 1000px;
+  }
+
+  .photo{
+    max-width: 500px;
+  }
+
+  main{
+    grid-area: mn;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .weather{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .oldTripDiv{
+    background-color: rgba(160, 160, 160, 0.521);
+    padding: 10px;
+    padding-bottom: 20px;
+    margin: 10px;
+  }
+  
+  .textHeader{
+    color: rgb(1, 39, 71);
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+  }
+
+  .text{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+  }
+
+  .textbox{
+    height: 20px;
+  }
+
+  .divForm{
+    grid-area: tt;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(248, 55, 103, 0.808);
+    align-items: center;
+  }
+
+  .weatherBlock{
+    display: flex;
+    flex-direction: column;
+  }
+}
