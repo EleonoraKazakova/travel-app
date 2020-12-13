@@ -1,104 +1,112 @@
+$font-stack: 'Balsamiq Sans', cursive;
+$font-text: 'M PLUS Rounded 1c', sans-serif;
+
 @media  (min-width: 400px) and (max-width: 699px){
-    .content{
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: 100px 150px  auto 50px;
-      grid-template-areas: 
-      'hd'
-      'tt'
-      'mn'
-      'ft';
-      min-height: 100vh;
-    }
+  .content{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 150px  auto 50px;
+    grid-template-areas: 
+    'hd'
+    'tt'
+    'mn'
+    'ft';
+    min-height: 100vh;
+  }
 
-    .form{
-        grid-area: tt;
-        display: flex;
-        justify-content: start;
-        //width: 300px;
-        flex-direction: column;
-      }
-    
-    .module{
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 5px;
-      margin: 40px;
-    }
-
-    .moduleTripEnd{
-      padding-top: 5px;
-      margin-left: 55px;
-    }
-  
-    .tripDiv{
-      padding-top: 20px;
-      padding-bottom: 20px;
-      //width: 700px;
-    }
-  
-    .photo{
-      max-width: 300px;
-      align-self: center;
-    }
-  
-    main{
-      grid-area: mn;
-      //font-size: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .weather{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-  
-    .oldTripDiv{
-      background-color: rgba(160, 160, 160, 0.521);
-      margin: 10px;
-      padding-bottom: 20px;
-    }
-    
-    .textHeader{
-      color: rgb(1, 39, 71);
-      text-align: center;
-      font-size: 16px;
-      padding-top: 30px;
-    }
-  
-    .text{
-      color: rgb(0, 0, 0);
-      font-size: 14px;
-    }
-    
-    .textbox{
-      height: 20px;
-      width: 100px;
-    }
-  
-    .divForm{
+  .form{
       grid-area: tt;
       display: flex;
-      //justify-content: center;
-      background-color: rgba(248, 55, 103, 0.808);
-      align-items: center;
-      padding-left: 10px;
-    }
-  
-    .elementTrip{
-      padding: 10px;
-    }
-  
-    .weatherBlock{
-      display: flex;
+      justify-content: start;
       flex-direction: column;
-      align-items: center;
     }
+  
+  .module{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    margin: 40px;
   }
+
+  .moduleTripEnd{
+    padding-top: 5px;
+    margin-left: 55px;
+  }
+
+  .tripDiv{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .photo{
+    max-width: 300px;
+    align-self: center;
+  }
+
+  main{
+    grid-area: mn;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mainText{
+    font-size: 16px;
+    font-family: $font-text;
+    font-weight: 600;
+  }
+  
+  .weather{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .oldTripDiv{
+    background-color: rgba(160, 160, 160, 0.521);
+    margin: 10px;
+    padding-bottom: 20px;
+  }
+  
+  .textHeader{
+    color: rgb(1, 39, 71);
+    text-align: center;
+    font-size: 16px;
+    font-family: $font-stack;
+    display: flex;
+    align-items: center;
+  }
+
+  .text{
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-family: $font-text;
+  }
+  
+  .textbox{
+    height: 12px;
+    width: 100px;
+  }
+
+  .divForm{
+    grid-area: tt;
+    display: flex;
+    background-color: rgb(250, 125, 156);
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .elementTrip{
+    padding: 10px;
+  }
+
+  .weatherBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

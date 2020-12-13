@@ -30,7 +30,7 @@ const createWeatherBlock = (trip) => {
   const weatherBlock = document.createElement('div')
 
   const titleWeather = document.createElement('p')
-  titleWeather.innerHTML = 'Weather forecast for the next 16 days:'
+  titleWeather.innerHTML = '<span class="mainText">Weather forecast for the next 16 days:</span>'
   weatherBlock.appendChild(titleWeather)
 
   const weather = renderWeather(trip.weather)
@@ -85,19 +85,18 @@ const createTripText = (trip) => {
   if (isNaN(tripDays)) {
     tripDays = 0
   }
-
+  
   const tripText = document.createElement("div")
   tripText.innerHTML = (
-    'Country: ' + trip.country +
-    '<br>' + 'City: ' + trip.city +
-    '<br>' + 'Travel date: ' + trip.date + ' - ' + trip.dateEnd +
-    '<br>' + 'Length of trip: ' + tripDays + '<br>' +
-    '<br>' + 'Country information:' +
-    '<br>' + 'Full name of the country: ' + trip.fullName +
-    '<br>' + 'Currency: ' + trip.currency +
-    '<br>' + 'Population: ' + trip.population +
-    '<br>' + 'Longitude: ' + trip.longitude +
-    '<br>' + 'Latitude: ' + trip.latitude
+    '<span class="mainText"> Country: </span>' + trip.country +
+    '<br><span class="mainText">City: </span>' + trip.city +
+    '<br><span class="mainText">Travel date: </span>' + trip.date + ' - ' + trip.dateEnd +
+    '<br><span class="mainText">Length of trip: </span>' + tripDays + '<br>' + '<br>' +
+    '<br><span class="mainText">Full name of the country: </span>' + trip.fullName +
+    '<br><span class="mainText">Currency: </span>' + trip.currency +
+    '<br><span class="mainText">Population: </span>' + trip.population +
+    '<br><span class="mainText">Longitude: </span>' + trip.longitude +
+    '<br><span class="mainText">Latitude: </span>' + trip.latitude
   )
 
   return tripText
