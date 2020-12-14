@@ -1,8 +1,8 @@
-@use 'gridLittle';
-@use 'gridMiddle';
-@use 'gridBig';
-@use 'grid900';
-@use 'grid300';
+@use 'grid320';
+@use 'grid321';
+@use 'grid400-699';
+@use 'grid700-1019';
+@use 'grid1020';
 
 body{
   background-color: rgb(232, 237, 252);
@@ -48,11 +48,7 @@ footer{
   gap: 10px;
 }
 
-.weatherDay{
-  display: flex;
-  border: 1px solid white;
-  padding: 5px;
-}
+
 
 .textWeather{
   color: aliceblue;

@@ -11,6 +11,4 @@ const getCityData = async (cityName) => {
   }
 }
 
-
 module.exports = {getCityData}
-

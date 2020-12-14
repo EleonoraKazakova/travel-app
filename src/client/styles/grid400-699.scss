@@ -1,7 +1,7 @@
 $font-stack: 'Balsamiq Sans', cursive;
 $font-text: 'M PLUS Rounded 1c', sans-serif;
 
-@media  (min-width: 700px) and (max-width: 1019px){
+@media  (min-width: 400px) and (max-width: 699px){
   .content{
     display: grid;
     grid-template-columns: 100%;
@@ -23,23 +23,18 @@ $font-text: 'M PLUS Rounded 1c', sans-serif;
   
   .module{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 5px;
-    justify-content: space-between;
+    margin: 40px;
   }
 
   .moduleTripEnd{
     padding-top: 5px;
+    margin-left: 55px;
   }
-
-  .moduleForm{
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 5px;
-    }
 
   .tripDiv{
     padding-top: 20px;
@@ -47,7 +42,7 @@ $font-text: 'M PLUS Rounded 1c', sans-serif;
   }
 
   .photo{
-    max-width: 350px;
+    max-width: 300px;
     align-self: center;
   }
 
@@ -68,20 +63,19 @@ $font-text: 'M PLUS Rounded 1c', sans-serif;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
-    max-width: 700px;
+    justify-content: center;
   }
 
   .oldTripDiv{
     background-color: rgba(160, 160, 160, 0.521);
     margin: 10px;
-    padding: 20px;
+    padding-bottom: 20px;
   }
   
   .textHeader{
     color: rgb(1, 39, 71);
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     font-family: $font-stack;
     display: flex;
     align-items: center;
@@ -114,5 +108,12 @@ $font-text: 'M PLUS Rounded 1c', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .weatherDay{
+    display: flex;
+    border: 1px solid white;
+    padding: 5px;
+    width: 120px;
   }
 }

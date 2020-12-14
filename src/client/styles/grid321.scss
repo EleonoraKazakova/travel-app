@@ -121,4 +121,11 @@ $font-text: 'M PLUS Rounded 1c', sans-serif;
     flex-direction: column;
     align-items: center;
   }
+
+  .weatherDay{
+    display: flex;
+    border: 1px solid white;
+    padding: 5px;
+    width: 120px;
+  }
 }

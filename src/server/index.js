@@ -35,7 +35,6 @@ function listening(){
 
 let trips = [ ]
 
-
 app.get('/trip', function (req, res) {
   res.send(trips)
 })
@@ -81,13 +80,7 @@ app.post('/trip', async(req, res) => {
   
   console.log(trips)
   res.send(trips)
-})
-
-  /*const tripsFilter = (trips) => {
-    dateLong = trips.filter(a => new Date(a.date).getTime() > new Date().getTime() )
-    dateShort = trips.filter(a => new Date(a.date).getTime() < new Date().getTime() )
-    return dateLong.concat(dateShort)
-  }*/
+})  
 
 //remove a trip by id
 app.delete('/delete/:id', (req, res) => { 
@@ -98,4 +91,3 @@ app.delete('/delete/:id', (req, res) => {
 }) 
 
 module.exports = {tripsFilter}
-

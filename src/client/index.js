@@ -1,9 +1,9 @@
 import './styles/styles.scss'
-import './styles/gridLittle.scss'
-import './styles/gridMiddle.scss'
-import './styles/gridBig.scss'
-import './styles/grid900.scss'
-import './styles/grid300.scss'
+import './styles/grid320.scss'
+import './styles/grid321.scss'
+import './styles/grid400-699.scss'
+import './styles/grid700-1019.scss'
+import './styles/grid1020.scss'
 
 import { action } from './js/action'
 
