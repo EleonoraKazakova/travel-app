@@ -82,7 +82,8 @@ app.post('/trip', async(req, res) => {
   res.send(trips)
 })  
 
-//remove a trip by id
+/**
+ * remove a trip by id*/
 app.delete('/delete/:id', (req, res) => { 
   let id = req.params['id']
   trips = trips.filter(el => id !== el['id'] )

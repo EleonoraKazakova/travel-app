@@ -7,8 +7,7 @@
     "test": "jest",
     "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack --config webpack.dev.js",
-    "dev-server": "webpack-dev-server  --config webpack.dev.js --open"
+    "build-dev": "webpack --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +36,6 @@
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.6.0",
     "webpack-dev-server": "^3.11.0",
-    "workbox-webpack-plugin": "^5.1.4"
+    "workbox-webpack-plugin": "^6.0.0"
   }
 }
